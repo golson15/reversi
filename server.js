@@ -160,7 +160,8 @@ players[socket.id].room = room;
 
   });
 
-  socket.on('disconnect', function() {
+/* May not have socket in function parameter */
+  socket.on('disconnect', function(socket) {
     log('Client disconnected '+JSON.stringify(players[socket.id]));
 
     if('undefined' !== typeof players[socket.id] && players[socket.id]){

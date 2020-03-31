@@ -113,7 +113,7 @@ socket.on('player_disconnected', function(payload) {
   }
 
   /* If we are being notified that we left the room, then ignore it */
-  if (payload.socket_id == socket_id) {
+  if (payload.socket_id == socket.id) {
     return;
   }
 
@@ -129,7 +129,7 @@ if (dom_elements.length != 0){
 
 /*Manage the message that a player has left */
 
-  var newHTML = '<p'+payload.username+'has left the lobby</p>';
+  var newHTML = '<p>'+payload.username+' has left the lobby</p>';
   var newNode = $(newHTML);
   newNode.hide();
   $('#messages').append(newNode);
