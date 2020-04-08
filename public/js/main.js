@@ -137,6 +137,8 @@ $('#messages').append(newNode);
 newNode.slideDown(1000);
 });
 
+
+
 /*Send an invite message to the server */
 function invite(who)  {
   var payload = {};

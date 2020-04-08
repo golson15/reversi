@@ -162,19 +162,20 @@ players[socket.id].room = room;
 
 /* May have socket in function parameter */
 
-    socket.on('disconnect', function(socket) {
+    socket.on('disconnect', function() {
       log('Client disconnected '+JSON.stringify(players[socket.id]));
 
 
     if('undefined' !== typeof players[socket.id] && players[socket.id]){
       var username = players[socket.id].username;
       var room = players[socket.id].room;
-      var paylod = {
+      var payload = {
                       username: username,
                       socket_id: socket.id
                     };
       delete players[socket.id];
-      io.in(room).emit('player_disconnected',payload);
+      io.in(room).emit('player_disconnected', payload);
+      //,payload
     }
   });
 
