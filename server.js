@@ -643,7 +643,7 @@ players[socket.id].room = room;
                  }
 
                  var color = payload.color;
-                 if('undefined' === typeof color || !color || (color != 'white' && color != 'black')) {
+                 if('undefined' === typeof color || !color || (color != 'light blue' && color != 'dark blue')) {
                    var error_message = 'play_token didn\'t specify a valid color, command aborted';
                    log(error_message);
                    socket.emit('play_token_response', {
@@ -670,13 +670,13 @@ players[socket.id].room = room;
                  socket.emit('play_token_response', success_data);
 
                  /*Execute the move */
-                 if(color == 'white'){
+                 if(color == 'light blue'){
                    game.board[row][column] = 'w';
-                   game.whose_turn = 'black';
+                   game.whose_turn = 'dark blue';
                  }
-                 else if(color == 'black'){
+                 else if(color == 'dark blue'){
                    game.board[row][column] = 'b';
-                   game.whose_turn = 'white';
+                   game.whose_turn = 'light blue';
                  }
 
                  var d = new Date();
@@ -702,7 +702,7 @@ function create_new_game(){
   var d = new Date();
   new_game.last_move_time = d.getTime();
 
-  new_game.whose_turn = 'white';
+  new_game.whose_turn = 'light blue';
 
   new_game.board = [
                       [' ', ' ',' ',' ',' ',' ',' ',' '],

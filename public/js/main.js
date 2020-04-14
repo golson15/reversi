@@ -335,10 +335,10 @@ socket.on('game_update', function(payload) {
 
 /*Update my color */
 if(socket.id == payload.game.player_white.socket){
-  my_color = 'white';
+  my_color = 'light blue';
 }
 else if(socket.id == payload.game.player_black.socket){
-  my_color = 'black';
+  my_color = 'dark blue';
 }
 else {
   /*Something weird is going on */
