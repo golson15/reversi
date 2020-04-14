@@ -390,7 +390,7 @@ for(row =0; row <8; row++) {
 
       /*Set up interactivity */
       $('#'+row+'_'+column).off('click');
-      if(board[row][column]== '  '){
+      if(board[row][column] == ' '){
         $('#'+row+'_'+column).addClass('hovered_over');
         $('#'+row+'_'+column).click(function(r,c) {
           return function(){

@@ -21,7 +21,7 @@ table#game_board td {
 }
 
 td.hovered_over:hover {
-  background: url('../images/hover.gif'),  url('../images/empty.gif');
+  background: url('../images/hover.gif');
   background-size: 100% 100%;
-  
+
 }
