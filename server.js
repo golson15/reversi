@@ -500,8 +500,8 @@ players[socket.id].room = room;
                                                     });
                   return;
                 }
-                /*May forget to switch to game_start_response  */
-                /* May be uninvite_response */
+
+
                 var requested_user = payload.requested_user;
                 if(('undefined' === typeof requested_user) || !requested_user) {
                   var error_message = 'uninvite didn\'t specify a requested user, command aborted';
@@ -517,7 +517,7 @@ players[socket.id].room = room;
                 var roomObject = io.sockets.adapter.rooms[room];
                 /*Make sure the user being invited is in the room */
                 if (!roomObject.sockets.hasOwnProperty(requested_user)){
-                  var error_message = 'gamestart requested a user that wasn\'t in the room, command aborted';
+                  var error_message = 'game_start requested a user that wasn\'t in the room, command aborted';
                   log(error_message);
                   socket.emit('game_start_response', {
                                                        result: 'fail',

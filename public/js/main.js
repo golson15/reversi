@@ -351,7 +351,7 @@ else {
   return;
 }
 
-$('#my_color').html('<h3 id="my_color">I am '+my_color+'<h/3>');
+$('#my_color').html('<h3 id="my_color">I am '+my_color+'</h3>');
 
 
 /*Animate changes to the board */
