@@ -878,7 +878,7 @@ function flip_board(who,row,column,board){
 
   flip_line(who,0,-1,row,column,board);
   flip_line(who,0,1,row,column,board);
-  
+
   flip_line(who,1,-1,row,column,board);
   flip_line(who,1,0,row,column,board);
   flip_line(who,1,1,row,column,board);
@@ -965,20 +965,35 @@ function send_game_update(socket, game_id, message) {
 
   var row,column;
   var count = 0;
+  var black = 0;
+  var white = 0;
   for(row = 0; row < 8; row++){
     for(column = 0; column < 8; column++){
-      if(games[game_id].board[row][column] != ' '){
+      if(games[game_id].legal_moves[row][column] != ' '){
         count++;
+      }
+      if(games[game_id].board[row][column] === 'b'){
+        black++;
+      }
+      if(games[game_id].board[row][column] === 'w'){
+        white++;
       }
     }
   }
 
-  if(count  == 64){
+  if(count == 0){
     /*Send  game  over message  */
+    var winner = 'tie game';
+    if(black > white){
+      winner = 'dark blue';
+    }
+    if(white > black){
+      winner = 'light blue';
+    }
     var  success_data   = {
                           result: 'success',
                           game: games[game_id],
-                          who_won: 'everyone',
+                          who_won: winner,
                           game_id: game_id
                         };
     io.in(game_id).emit('game_over',success_data);
